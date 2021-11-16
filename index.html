@@ -7,20 +7,82 @@
     <title>Document</title>
 
     <style>
+    
+    canvas{
+        margin-left: 30%;
+        border: 17px black solid;
+    }
 
-        #snakeCanvas{
-            border: 4px black solid;
-        }
+    .difficultyBtn{
+        width: 150px;
+        height: 65px;
+        position: absolute;
+
+        border-right: 5px solid grey;
+        border-bottom: 5px solid grey;
+
+        margin-left: 3px;
+    }
+
+    #easy{
+        margin-top: 0px;
+    }
+
+    #medium{
+        margin-top: 80px;
+    }
+
+    #hard{
+        margin-top: 160px;
+    }
+
+    #insane{
+        margin-top: 240px;
+    }
+
+    #startBtn{
+        width: 150px;
+        height: 65px;
+
+        position: absolute;
+        margin-top: 320px;
+
+        font-size: larger;
+
+        margin-left: 3px;
+
+        background-color: rgb(2, 158, 2);
+    }
+
+    .pressed{
+        background-color: rgba(128, 128, 128, 0.2);
+
+        border-right: 2px solid rgba(128, 128, 128, 0.9);
+        border-bottom: 2px solid rgba(128, 128, 128, 0.9);
+
+        border-top: grey 2px solid;
+        border-left: grey 2px solid;
+    }
+
+    #score{
+        margin-left: 40%;
+        font-size: larger;
+    }
+
+    #highScore{
+        margin-left: 40%;
+        font-size: larger;
+    }
 
     </style>
 </head>
 <body>
     
     <canvas id="snakeCanvas" width="400px" height="400xp"></canvas>
-    <br>
+
 
     <button id="startBtn">(Enter) Start</button>
-    <button class="difficultyBtn" id="easy">(1) Easy</button>
+    <button class="difficultyBtn pressed" id="easy">(1) Easy</button>
     <button class="difficultyBtn" id="medium">(2) Medium</button>
     <button class="difficultyBtn" id="hard">(3) Hard</button>
     <button class="difficultyBtn" id="insane">(4) Insane</button>

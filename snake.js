@@ -136,6 +136,11 @@ function changeDifficulty(event){
         hardBtn.disabled = false;
         insaneBtn.disabled = false;
 
+        easyBtn.classList.add("pressed");
+        mediumBtn.classList.remove("pressed");
+        hardBtn.classList.remove("pressed");
+        insaneBtn.classList.remove("pressed");
+
     } else if(event.key == "2"){
 
         difficulty = 100;
@@ -143,6 +148,11 @@ function changeDifficulty(event){
         mediumBtn.disabled = true;
         hardBtn.disabled = false;
         insaneBtn.disabled = false;
+
+        easyBtn.classList.remove("pressed");
+        mediumBtn.classList.add("pressed");
+        hardBtn.classList.remove("pressed");
+        insaneBtn.classList.remove("pressed");
 
     } else if(event.key == "3"){
 
@@ -152,6 +162,11 @@ function changeDifficulty(event){
         hardBtn.disabled = true;
         insaneBtn.disabled = false;
 
+        easyBtn.classList.remove("pressed");
+        mediumBtn.classList.remove("pressed");
+        hardBtn.classList.add("pressed");
+        insaneBtn.classList.remove("pressed");
+
     } else if(event.key == "4"){
 
         difficulty = 25;
@@ -159,6 +174,11 @@ function changeDifficulty(event){
         mediumBtn.disabled = false;
         hardBtn.disabled = false;
         insaneBtn.disabled = true;
+
+        easyBtn.classList.remove("pressed");
+        mediumBtn.classList.remove("pressed");
+        hardBtn.classList.remove("pressed");
+        insaneBtn.classList.add("pressed");
 
     } else if(event.key == "Enter"){
         start.disabled = true;
@@ -285,6 +305,7 @@ function main(){
         easyBtn.disabled = true;
         mediumBtn.disabled = true;
         hardBtn.disabled = true;
+        insaneBtn.disabled = true;
 
         clearCanvas();
         drawGrid();
@@ -325,17 +346,25 @@ function main(){
                 case 300:
                     mediumBtn.disabled = false;
                     hardBtn.disabled = false;
+                    insaneBtn.disabled = false;
                 break;
 
                 case 100:
                     easyBtn.disabled = false;
                     hardBtn.disabled = false;
+                    insaneBtn.disabled = false;
                 break;
 
                 case 40: 
                     easyBtn.disabled = false;
                     mediumBtn.disabled = false;
+                    insaneBtn.disabled = false;
                 break;
+
+                case 25:
+                    easyBtn.disabled = false;
+                    mediumBtn.disabled = false;
+                    hardBtn.disabled = false;
             }
             return
         }
@@ -371,17 +400,25 @@ function main(){
                 case 300:
                     mediumBtn.disabled = false;
                     hardBtn.disabled = false;
+                    insaneBtn.disabled = false;
                 break;
 
                 case 100:
                     easyBtn.disabled = false;
                     hardBtn.disabled = false;
+                    insaneBtn.disabled = false;
                 break;
 
                 case 40: 
                     easyBtn.disabled = false;
                     mediumBtn.disabled = false;
+                    insaneBtn.disabled = false;
                 break;
+
+                case 25:
+                    easyBtn.disabled = false;
+                    mediumBtn.disabled = false;
+                    hardBtn.disabled = false;
             }
             return
         }
@@ -404,6 +441,11 @@ easyBtn.addEventListener("click", () => {
     mediumBtn.disabled = false;
     hardBtn.disabled = false;
     insaneBtn.disabled = false;
+
+    easyBtn.classList.toggle("pressed");
+    mediumBtn.classList.remove("pressed");
+    hardBtn.classList.remove("pressed");
+    insaneBtn.classList.remove("pressed");
 });
 mediumBtn.addEventListener("click", () => {
     difficulty = 100;
@@ -411,6 +453,11 @@ mediumBtn.addEventListener("click", () => {
     mediumBtn.disabled = true;
     hardBtn.disabled = false;
     insaneBtn.disabled = false;
+
+    easyBtn.classList.remove("pressed");
+    mediumBtn.classList.toggle("pressed");
+    hardBtn.classList.remove("pressed");
+    insaneBtn.classList.remove("pressed");
 });
 hardBtn.addEventListener("click", () => {
     difficulty = 40;
@@ -418,6 +465,11 @@ hardBtn.addEventListener("click", () => {
     mediumBtn.disabled = false;
     hardBtn.disabled = true;
     insaneBtn.disabled = false;
+
+    easyBtn.classList.remove("pressed");
+    mediumBtn.classList.remove("pressed");
+    hardBtn.classList.toggle("pressed");
+    insaneBtn.classList.remove("pressed");
 });
 insaneBtn.addEventListener("click", () => {
     difficulty = 25;
@@ -425,6 +477,11 @@ insaneBtn.addEventListener("click", () => {
     mediumBtn.disabled = false;
     hardBtn.disabled = false;
     insaneBtn.disabled = true;
+
+    easyBtn.classList.remove("pressed");
+    mediumBtn.classList.remove("pressed");
+    hardBtn.classList.remove("pressed");
+    insaneBtn.classList.toggle("pressed");
 });
 
 start.addEventListener("click", main);
