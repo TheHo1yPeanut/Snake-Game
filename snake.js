@@ -20,6 +20,8 @@ easyBtn.disabled = true;
 
 let score = 0;
 let scoreP = document.getElementById("score");
+let highScore = document.getElementById("highScore");
+let highScoreVal = 0;
 
 var appleCordsX;
 var appleCordsY;
@@ -122,6 +124,12 @@ function checkForWin(){
     drawGrid();
     moveSnake();
     drawSnake();    
+
+    if(score > highScoreVal){
+        highScoreVal = score;
+    }
+
+    highScore.innerHTML = `High Score: ${highScoreVal}`;
 
     score = 0;
     scoreP = `scoreP ${score}`;
@@ -333,6 +341,12 @@ function main(){
             drawGrid();
             moveSnake();
             drawSnake();    
+
+            if(score > highScoreVal){
+                highScoreVal = score;
+            }
+        
+            highScore.innerHTML = `High Score: ${highScoreVal}`;
 
             score = 0;
             scoreP.innerHTML = `Score: ${score}`;
