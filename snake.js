@@ -15,6 +15,7 @@ let difficulty = defaultDifficulty;
 let easyBtn = document.getElementById("easy");
 let mediumBtn = document.getElementById("medium");
 let hardBtn = document.getElementById("hard");
+let insaneBtn = document.getElementById("insane");
 
 easyBtn.disabled = true;
 
@@ -96,61 +97,20 @@ function applePlacement(){
 }
 
 function checkForWin(){
-    for(var xcord = 0; xcord < board.width; xcord += 10){
-        for(var ycord = 0; ycord < board.height; ycord += 10){
-            for(let snk = 0; snk < snake.length; snk++){
-                if(xcord != snake[snk].x && ycord != snake[snk].y){
-                    console.log("no win");
-                    return;
-                }
-            }
-        }
+
+    let num;
+
+    if(difficulty == 300){
+        num = 20;
+    } else if(difficulty == 100){
+        num = 35;
+    } else if(difficulty == 40){
+        num = 30;
+    } else if(difficulty == 25){
+        num = 95;
     }
 
-    alert("YOU'VE WON");
-
-    document.addEventListener("keydown", changeDifficulty);
-
-    start.disabled = false
-
-    dx = 10;
-    dy = 0;
-
-    snake = [
-        {x: 200, y: 200}, {x: 190, y:200}, {x: 180, y: 200}, {x: 170, y: 200}, {x: 160, y: 200}
-    ]
-
-    clearCanvas();
-    drawGrid();
-    moveSnake();
-    drawSnake();    
-
-    if(score > highScoreVal){
-        highScoreVal = score;
-    }
-
-    highScore.innerHTML = `High Score: ${highScoreVal}`;
-
-    score = 0;
-    scoreP = `scoreP ${score}`;
-
-    switch(difficulty){
-        case 300:
-            mediumBtn.disabled = false;
-            hardBtn.disabled = false;
-        break;
-
-        case 100:
-            easyBtn.disabled = false;
-            hardBtn.disabled = false;
-        break;
-
-        case 40: 
-            easyBtn.disabled = false;
-            mediumBtn.disabled = false;
-        break;
-    }
-    return
+    return snake.length == num; 
 }
 
 function gameHasEnded(){
@@ -174,6 +134,7 @@ function changeDifficulty(event){
         easyBtn.disabled = true;
         mediumBtn.disabled = false;
         hardBtn.disabled = false;
+        insaneBtn.disabled = false;
 
     } else if(event.key == "2"){
 
@@ -181,6 +142,7 @@ function changeDifficulty(event){
         easyBtn.disabled = false;
         mediumBtn.disabled = true;
         hardBtn.disabled = false;
+        insaneBtn.disabled = false;
 
     } else if(event.key == "3"){
 
@@ -188,6 +150,15 @@ function changeDifficulty(event){
         easyBtn.disabled = false;
         mediumBtn.disabled = false;
         hardBtn.disabled = true;
+        insaneBtn.disabled = false;
+
+    } else if(event.key == "4"){
+
+        difficulty = 25;
+        easyBtn.disabled = false;
+        mediumBtn.disabled = false;
+        hardBtn.disabled = false;
+        insaneBtn.disabled = true;
 
     } else if(event.key == "Enter"){
         start.disabled = true;
@@ -320,12 +291,57 @@ function main(){
         moveSnake();
         drawSnake();
 
-        checkForWin();
-        
         appleSpawn(appleCordsX, appleCordsY);
+    
 
         if(gameHasEnded()){
             alert("GAME OVER");
+            document.addEventListener("keydown", changeDifficulty);
+
+            start.disabled = false
+
+            dx = 10;
+            dy = 0;
+
+            snake = [
+                {x: 200, y: 200}, {x: 190, y:200}, {x: 180, y: 200}, {x: 170, y: 200}, {x: 160, y: 200}
+            ]
+
+            clearCanvas();
+            drawGrid();
+            moveSnake();
+            drawSnake();    
+
+            if(score > highScoreVal){
+                highScoreVal = score;
+            }
+        
+            highScore.innerHTML = `High Score: ${highScoreVal}`;
+
+            score = 0;
+            scoreP.innerHTML = `Score: ${score}`;
+
+            switch(difficulty){
+                case 300:
+                    mediumBtn.disabled = false;
+                    hardBtn.disabled = false;
+                break;
+
+                case 100:
+                    easyBtn.disabled = false;
+                    hardBtn.disabled = false;
+                break;
+
+                case 40: 
+                    easyBtn.disabled = false;
+                    mediumBtn.disabled = false;
+                break;
+            }
+            return
+        }
+
+        if(checkForWin()){
+            alert("YOU'VE WON");
             document.addEventListener("keydown", changeDifficulty);
 
             start.disabled = false
@@ -387,19 +403,30 @@ easyBtn.addEventListener("click", () => {
     easyBtn.disabled = true;
     mediumBtn.disabled = false;
     hardBtn.disabled = false;
+    insaneBtn.disabled = false;
 });
 mediumBtn.addEventListener("click", () => {
     difficulty = 100;
     easyBtn.disabled = false;
     mediumBtn.disabled = true;
     hardBtn.disabled = false;
+    insaneBtn.disabled = false;
 });
 hardBtn.addEventListener("click", () => {
     difficulty = 40;
     easyBtn.disabled = false;
     mediumBtn.disabled = false;
     hardBtn.disabled = true;
+    insaneBtn.disabled = false;
 });
+insaneBtn.addEventListener("click", () => {
+    difficulty = 25;
+    easyBtn.disabled = false;
+    mediumBtn.disabled = false;
+    hardBtn.disabled = false;
+    insaneBtn.disabled = true;
+});
+
 start.addEventListener("click", main);
 document.addEventListener("keydown", directionChange);
 document.addEventListener("keydown", changeDifficulty);
