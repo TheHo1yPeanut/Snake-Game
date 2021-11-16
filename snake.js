@@ -94,10 +94,11 @@ function applePlacement(){
 }
 
 function checkForWin(){
-    for(let i = 0; i < board.width; i += 10){
-        for(let y = 0; y < board.length; y += 10){
+    for(var xcord = 0; xcord < board.width; xcord += 10){
+        for(var ycord = 0; ycord < board.height; ycord += 10){
             for(let snk = 0; snk < snake.length; snk++){
-                if(i == snake[snk].y && y == snake[snk].x){
+                if(xcord != snake[snk].x && ycord != snake[snk].y){
+                    console.log("no win");
                     return;
                 }
             }
@@ -311,7 +312,7 @@ function main(){
         moveSnake();
         drawSnake();
 
-        //checkForWin();
+        checkForWin();
         
         appleSpawn(appleCordsX, appleCordsY);
 
