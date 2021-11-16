@@ -41,4 +41,4 @@
 <hr>
 
 <h2>Where play?</h2>
-<p>https://6193a20b2f6990098729dc3f--trusting-austin-0cb57d.netlify.app/</p>
+<p>https://6193b9a26ef50709cd803545--trusting-austin-0cb57d.netlify.app/</p>
